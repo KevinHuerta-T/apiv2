@@ -1,0 +1,29 @@
+-- Crear tabla de usuarios
+CREATE TABLE IF NOT EXISTS usuarios (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  nombre VARCHAR(255) NOT NULL,
+  apellido VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  rol ENUM('rol basico', 'rol medio', 'rol medio alto', 'rol alto medio', 'rol alto') NOT NULL DEFAULT 'rol basico',
+  createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+);
+
+-- Crear tabla de publicaciones
+CREATE TABLE IF NOT EXISTS publicaciones (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  titulo VARCHAR(255) NOT NULL,
+  descripcion TEXT NOT NULL,
+  usuario_id INT UNSIGNED NOT NULL,
+  createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  deletedAt TIMESTAMP NULL DEFAULT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (usuario_id) REFERENCES usuarios (id)
+);
+
+-- Crear índices para acelerar búsquedas
+CREATE INDEX index_publicaciones_usuario_id ON publicaciones (usuario_id);
+CREATE INDEX index_usuarios_email ON usuarios (email);

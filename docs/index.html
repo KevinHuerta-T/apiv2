@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.4/swagger-ui.min.css" integrity="sha512-Ls7CCa+H2HTJ4VPODg9JZdAbOZCrQPGGr1rNl1OKnkDeOYwYfB/8ya/ABRLhdh6qzkiZ0a0MjlCej6m5Q5dCg==" crossorigin="anonymous" />
+  </head>
+  <body>
+    <div id="swagger-ui"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.4/swagger-ui-bundle.min.js" integrity="sha512-5e5tz5BwR5nUUmsWSSoOHyJ42eM9aM0m0mRRjx57mV3qRU+N0JGyj+0CmUh7vJN1tovbcmyVz8noLhqx7IDu4w==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.4/swagger-ui-standalone-preset.min.js" integrity="sha512-D4K4iF9XZaAOp8aIQK57xvPq3qGyimYLR8jC1mhAMvLq6U9p6UnD8Loi0xSGaqfZn5l5cFksaAmE9GQ2Wmz8/A==" crossorigin="anonymous"></script>
+    <script>
+      const ui = SwaggerUIBundle({
+        url: "./swagger.json",
+        dom_id: "#swagger-ui",
+        deepLinking: true,
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        plugins: [
+          SwaggerUIBundle.plugins.DownloadUrl
+        ],
+        layout: "BaseLayout",
+        supportedSubmitMethods: []
+      });
+    </script>
+  </body>
+</html>
